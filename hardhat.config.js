@@ -1,5 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
-const { alchemyApiKey, privateKey, aTestPrivateKey } = require('./secrets.json');
+const { alchemySepoliaHttps, acc1, acc2 } = require('./secrets.json');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -7,11 +7,11 @@ module.exports = {
   defaultNetwork:"local",
   networks: {
     local: {
-      url: 'http://127.0.0.1:8545/',
+      url: 'http://127.0.0.1:8545/'
     },
-    mumbai: {
-      url: `https://polygon-mumbai.g.alchemy.com/v2/${alchemyApiKey}`,
-      accounts: [privateKey, aTestPrivateKey],
-    },
-  },
+    sepolia: {
+      url: `${alchemySepoliaHttps}`,
+      accounts: [acc1.privateKey, acc2.privateKey]
+    }
+  }
 };
